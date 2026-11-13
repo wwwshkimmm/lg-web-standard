@@ -1,0 +1,72 @@
+<form class="lg-form" data-lg-component="form" novalidate>
+  <div class="lg-form__group">
+    <label for="lg-form-userName" class="lg-form__label">
+      이름
+      <span class="lg-form__required" aria-hidden="true">*</span>
+      <span class="lg-form__sr-only">(필수)</span>
+    </label>
+    <input type="text" id="lg-form-userName" name="userName" class="lg-form__input"
+           required aria-required="true" autocomplete="name" placeholder="이름을 입력하세요">
+    <p class="lg-form__error-msg" role="alert" aria-live="assertive" hidden></p>
+  </div>
+
+  <div class="lg-form__group">
+    <label for="lg-form-phone" class="lg-form__label">
+      휴대폰 번호
+      <span class="lg-form__required" aria-hidden="true">*</span>
+      <span class="lg-form__sr-only">(필수)</span>
+    </label>
+    <input type="tel" id="lg-form-phone" name="phone" class="lg-form__input"
+           required aria-required="true" inputmode="tel" placeholder="- 없이 입력">
+    <p class="lg-form__error-msg" role="alert" aria-live="assertive" hidden></p>
+  </div>
+
+  <div class="lg-form__group">
+    <label for="lg-form-address" class="lg-form__label">주소</label>
+    <div class="lg-form__inline">
+      <input type="text" id="lg-form-address" name="address" class="lg-form__input"
+             readonly placeholder="주소 검색 버튼을 클릭하세요">
+      <button type="button" class="lg-btn lg-btn--outline lg-btn--md">주소 검색</button>
+    </div>
+  </div>
+
+  <div class="lg-form__group">
+    <span class="lg-form__label" id="lg-form-birth-label">
+      구입일자
+      <span class="lg-form__required" aria-hidden="true">*</span>
+      <span class="lg-form__sr-only">(필수)</span>
+    </span>
+    <div class="lg-form__grid lg-form__grid--3" role="group" aria-labelledby="lg-form-birth-label">
+      <select class="lg-form__select" name="purchaseYear" aria-label="구입 연도" required>
+        <option value="">년</option>
+        <option value="2026">2026</option>
+        <option value="2025">2025</option>
+      </select>
+      <select class="lg-form__select" name="purchaseMonth" aria-label="구입 월" required>
+        <option value="">월</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+      </select>
+      <select class="lg-form__select" name="purchaseDay" aria-label="구입 일" required>
+        <option value="">일</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+      </select>
+    </div>
+    <p class="lg-form__error-msg" role="alert" aria-live="assertive" hidden></p>
+  </div>
+
+  <div class="lg-form__group">
+    <span class="lg-form__label" id="lg-form-card-label">카드번호</span>
+    <div class="lg-form__grid lg-form__grid--4" role="group" aria-labelledby="lg-form-card-label">
+      <input type="text" class="lg-form__input" name="cardNo1" maxlength="4" inputmode="numeric" aria-label="카드번호 1~4자리">
+      <input type="text" class="lg-form__input" name="cardNo2" maxlength="4" inputmode="numeric" aria-label="카드번호 5~8자리">
+      <input type="text" class="lg-form__input" name="cardNo3" maxlength="4" inputmode="numeric" aria-label="카드번호 9~12자리">
+      <input type="text" class="lg-form__input" name="cardNo4" maxlength="4" inputmode="numeric" aria-label="카드번호 13~16자리">
+    </div>
+  </div>
+
+  <div class="lg-form__actions">
+    <button type="submit" class="lg-btn lg-btn--primary lg-btn--md">신청하기</button>
+  </div>
+</form>

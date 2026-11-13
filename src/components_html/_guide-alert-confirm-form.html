@@ -1,0 +1,304 @@
+      <!-- ===== Alert Case ===== -->
+      <section id="comp-alert-case" class="lg-guide__section">
+        <h2 class="lg-guide__section-title">Alert Case — 타이틀 + 설명</h2>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">미리보기 (Preview)</h3>
+          <div class="lg-guide__preview">
+            <button type="button" data-id="#laypop2" data-control="modal" class="btn lg-btn lg-btn--outline lg-btn--md"><span>Alert- 타이틀 + 설명</span></button>
+            <p style="margin:12px 0 0;font-size:13px;color:var(--text-secondary);">실서버에서는 <code>lgkorUi.alert</code> + jQuery 스크립트로 동작합니다.</p>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">접근성 및 스크립트 필수 규격</h3>
+          <div class="lg-guide__a11y">
+            <ul class="lg-guide__a11y-list">
+              <li><code>data-id="#laypop2"</code> — 모달 레이어 팝업 고유 ID 연동</li>
+              <li><code>data-control="modal"</code> — 표준 모달 제어 이벤트 바인딩</li>
+              <li><code>lgkorUi.alert</code> — 사내 UI 라이브러리 커스텀 얼럿 호출</li>
+              <li><code>typeClass: 'type2'</code> — 오류/안내 전용 시각 스타일 지정</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">HTML 코드</h3>
+          <div class="lg-guide__code-wrap">
+            <button type="button" class="lg-guide__copy-btn" data-lg-copy-btn data-copy-target="code-alert-html">코드 복사</button>
+            <pre class="lg-guide__code"><code id="code-alert-html">&lt;!-- DOM --&gt;
+&lt;button type="button" data-id="#laypop2" data-control="modal" class="btn"&gt;&lt;span&gt;Alert- 타이틀 + 설명&lt;/span&gt;&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">스크립트(Script) 가이드</h3>
+          <div class="lg-guide__code-wrap">
+            <button type="button" class="lg-guide__copy-btn" data-lg-copy-btn data-copy-target="code-alert-script">코드 복사</button>
+            <pre class="lg-guide__code"><code id="code-alert-script">&lt;script&gt;
+$(function() {
+  $('.btn').on('click', function(e) {
+    var id = $(e.currentTarget).data('id');
+    var obj = { title: '', typeClass: '', ok: function() {} };
+    var desc = '';
+
+    if (id == "#laypop2") {
+      obj = $.extend(obj, { typeClass: 'type2', title: '인증이 실패했습니다.' });
+      desc = '&lt;p&gt;자세한 사항은 1577-4090 으로&lt;br&gt;문의부탁드립니다.&lt;/p&gt;';
+    }
+    lgkorUi.alert(desc, obj);
+  });
+});
+&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Confirm Case ===== -->
+      <section id="comp-confirm-case" class="lg-guide__section">
+        <h2 class="lg-guide__section-title">Confirm Case — 타이틀</h2>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">미리보기 (Preview)</h3>
+          <div class="lg-guide__preview">
+            <button type="button" data-id="#laypop3" data-control="modal" class="btn lg-btn lg-btn--outline lg-btn--md"><span>Confirm Case- 타이틀</span></button>
+            <p style="margin:12px 0 0;font-size:13px;color:var(--text-secondary);">실서버에서는 <code>lgkorUi.alert</code> + jQuery 스크립트로 확인/취소 분기합니다.</p>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">접근성 및 스크립트 필수 규격</h3>
+          <div class="lg-guide__a11y">
+            <ul class="lg-guide__a11y-list">
+              <li><code>data-id="#laypop3"</code> — 컨펌 레이어 팝업 고유 ID 연동</li>
+              <li><code>data-control="modal"</code> — 표준 모달 제어 이벤트 바인딩</li>
+              <li><code>lgkorUi.alert</code> — <code>title</code> 컨디션 동적 매핑으로 확인/취소 분기</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">HTML 코드</h3>
+          <div class="lg-guide__code-wrap">
+            <button type="button" class="lg-guide__copy-btn" data-lg-copy-btn data-copy-target="code-confirm-html">코드 복사</button>
+            <pre class="lg-guide__code"><code id="code-confirm-html">&lt;!-- DOM --&gt;
+&lt;button type="button" data-id="#laypop3" data-control="modal" class="btn"&gt;&lt;span&gt;Confirm Case- 타이틀&lt;/span&gt;&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">스크립트(Script) 가이드</h3>
+          <div class="lg-guide__code-wrap">
+            <button type="button" class="lg-guide__copy-btn" data-lg-copy-btn data-copy-target="code-confirm-script">코드 복사</button>
+            <pre class="lg-guide__code"><code id="code-confirm-script">&lt;script&gt;
+$(function() {
+  $('.btn').on('click', function(e) {
+    var id = $(e.currentTarget).data('id');
+    var obj = { title: '', typeClass: '', ok: function() {} };
+    var desc = '';
+
+    if (id == "#laypop3") {
+      obj = $.extend(obj, { title: '선택한 제품을 삭제하시겠습니까?' });
+      desc = '';
+    }
+    lgkorUi.alert(desc, obj);
+  });
+});
+&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Form ===== -->
+      <section id="comp-form" class="lg-guide__section">
+        <h2 class="lg-guide__section-title">Form (입력 양식)</h2>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">미리보기 (Preview)</h3>
+          <div class="lg-guide__preview">
+            <form class="lg-form" data-lg-component="form" novalidate>
+              <div class="lg-form__group">
+                <label for="lg-form-preview-userName" class="lg-form__label">
+                  이름
+                  <span class="lg-form__required" aria-hidden="true">*</span>
+                  <span class="lg-form__sr-only">(필수)</span>
+                </label>
+                <input type="text" id="lg-form-preview-userName" name="userName" class="lg-form__input" required aria-required="true" placeholder="이름을 입력하세요">
+                <p class="lg-form__error-msg" role="alert" aria-live="assertive" hidden></p>
+              </div>
+              <div class="lg-form__group">
+                <label for="lg-form-preview-phone" class="lg-form__label">
+                  휴대폰 번호
+                  <span class="lg-form__required" aria-hidden="true">*</span>
+                  <span class="lg-form__sr-only">(필수)</span>
+                </label>
+                <input type="tel" id="lg-form-preview-phone" name="phone" class="lg-form__input" required aria-required="true" placeholder="- 없이 입력">
+                <p class="lg-form__error-msg" role="alert" aria-live="assertive" hidden></p>
+              </div>
+              <div class="lg-form__group">
+                <label for="lg-form-preview-address" class="lg-form__label">주소</label>
+                <div class="lg-form__inline">
+                  <input type="text" id="lg-form-preview-address" name="address" class="lg-form__input" readonly placeholder="주소 검색 버튼을 클릭하세요">
+                  <button type="button" class="lg-btn lg-btn--outline lg-btn--md">주소 검색</button>
+                </div>
+              </div>
+              <div class="lg-form__group">
+                <span class="lg-form__label" id="lg-form-preview-birth-label">
+                  구입일자
+                  <span class="lg-form__required" aria-hidden="true">*</span>
+                  <span class="lg-form__sr-only">(필수)</span>
+                </span>
+                <div class="lg-form__grid lg-form__grid--3" role="group" aria-labelledby="lg-form-preview-birth-label">
+                  <select class="lg-form__select" name="purchaseYear" aria-label="구입 연도" required>
+                    <option value="">년</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                  </select>
+                  <select class="lg-form__select" name="purchaseMonth" aria-label="구입 월" required>
+                    <option value="">월</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                  </select>
+                  <select class="lg-form__select" name="purchaseDay" aria-label="구입 일" required>
+                    <option value="">일</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                  </select>
+                </div>
+                <p class="lg-form__error-msg" role="alert" aria-live="assertive" hidden></p>
+              </div>
+              <div class="lg-form__group">
+                <span class="lg-form__label" id="lg-form-preview-card-label">카드번호</span>
+                <div class="lg-form__grid lg-form__grid--4" role="group" aria-labelledby="lg-form-preview-card-label">
+                  <input type="text" class="lg-form__input" name="cardNo1" maxlength="4" inputmode="numeric" aria-label="카드번호 1~4자리">
+                  <input type="text" class="lg-form__input" name="cardNo2" maxlength="4" inputmode="numeric" aria-label="카드번호 5~8자리">
+                  <input type="text" class="lg-form__input" name="cardNo3" maxlength="4" inputmode="numeric" aria-label="카드번호 9~12자리">
+                  <input type="text" class="lg-form__input" name="cardNo4" maxlength="4" inputmode="numeric" aria-label="카드번호 13~16자리">
+                </div>
+              </div>
+              <div class="lg-form__actions">
+                <button type="submit" class="lg-btn lg-btn--primary lg-btn--md">신청하기</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">접근성 및 마크업 필수 규격</h3>
+          <div class="lg-guide__a11y">
+            <ul class="lg-guide__a11y-list">
+              <li>필수 입력: <code>&lt;span class="lg-form__required" aria-hidden="true"&gt;*&lt;/span&gt;</code> + <code>required</code> · <code>aria-required="true"</code></li>
+              <li>오류 메시지: <code>.lg-form__error-msg</code> + <code>role="alert"</code> · <code>aria-live="assertive"</code></li>
+              <li>인라인 조합: <code>.lg-form__inline</code> (Text Input + 버튼)</li>
+              <li>다중 필드 행: <code>.lg-form__grid--3</code> (구입일자) · <code>.lg-form__grid--4</code> (카드번호)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">HTML 코드</h3>
+          <div class="lg-guide__code-wrap">
+            <button type="button" class="lg-guide__copy-btn" data-lg-copy-btn data-copy-target="code-form-html">코드 복사</button>
+            <pre class="lg-guide__code"><code id="code-form-html">&lt;form class="lg-form" data-lg-component="form" novalidate&gt;
+  &lt;div class="lg-form__group"&gt;
+    &lt;label for="userName" class="lg-form__label"&gt;
+      이름
+      &lt;span class="lg-form__required" aria-hidden="true"&gt;*&lt;/span&gt;
+      &lt;span class="lg-form__sr-only"&gt;(필수)&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;input type="text" id="userName" name="userName" class="lg-form__input"
+           required aria-required="true" placeholder="이름을 입력하세요"&gt;
+    &lt;p class="lg-form__error-msg" role="alert" aria-live="assertive" hidden&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="lg-form__group"&gt;
+    &lt;label for="address" class="lg-form__label"&gt;주소&lt;/label&gt;
+    &lt;div class="lg-form__inline"&gt;
+      &lt;input type="text" id="address" name="address" class="lg-form__input" readonly&gt;
+      &lt;button type="button" class="lg-btn lg-btn--outline lg-btn--md"&gt;주소 검색&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="lg-form__group"&gt;
+    &lt;span class="lg-form__label" id="birth-label"&gt;
+      구입일자 &lt;span class="lg-form__required" aria-hidden="true"&gt;*&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;div class="lg-form__grid lg-form__grid--3" role="group" aria-labelledby="birth-label"&gt;
+      &lt;select class="lg-form__select" name="purchaseYear" aria-label="구입 연도" required&gt;...&lt;/select&gt;
+      &lt;select class="lg-form__select" name="purchaseMonth" aria-label="구입 월" required&gt;...&lt;/select&gt;
+      &lt;select class="lg-form__select" name="purchaseDay" aria-label="구입 일" required&gt;...&lt;/select&gt;
+    &lt;/div&gt;
+    &lt;p class="lg-form__error-msg" role="alert" aria-live="assertive" hidden&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="lg-form__group"&gt;
+    &lt;span class="lg-form__label" id="card-label"&gt;카드번호&lt;/span&gt;
+    &lt;div class="lg-form__grid lg-form__grid--4" role="group" aria-labelledby="card-label"&gt;
+      &lt;input type="text" class="lg-form__input" name="cardNo1" maxlength="4" inputmode="numeric" aria-label="카드번호 1~4자리"&gt;
+      &lt;input type="text" class="lg-form__input" name="cardNo2" maxlength="4" inputmode="numeric" aria-label="카드번호 5~8자리"&gt;
+      &lt;input type="text" class="lg-form__input" name="cardNo3" maxlength="4" inputmode="numeric" aria-label="카드번호 9~12자리"&gt;
+      &lt;input type="text" class="lg-form__input" name="cardNo4" maxlength="4" inputmode="numeric" aria-label="카드번호 13~16자리"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="lg-form__actions"&gt;
+    &lt;button type="submit" class="lg-btn lg-btn--primary lg-btn--md"&gt;신청하기&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="lg-guide__block">
+          <h3 class="lg-guide__block-title">JSTL 및 유효성 검사(Validation) 가이드</h3>
+          <div class="lg-guide__code-wrap">
+            <button type="button" class="lg-guide__copy-btn" data-lg-copy-btn data-copy-target="code-form-jstl">코드 복사</button>
+            <pre class="lg-guide__code"><code id="code-form-jstl">&lt;%@ taglib prefix="c" uri="jakarta.tags.core" %&gt;
+
+&lt;form class="lg-form" data-lg-component="form" method="post" action="${submitUrl}" novalidate&gt;
+  &lt;div class="lg-form__group"&gt;
+    &lt;label for="userName" class="lg-form__label"&gt;
+      이름 &lt;span class="lg-form__required" aria-hidden="true"&gt;*&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;input type="text" id="userName" name="userName" class="lg-form__input"
+           value="&lt;c:out value='${formData.userName}'/&gt;"
+           required aria-required="true"
+           &lt;c:if test="${not empty fieldErrors.userName}"&gt;aria-invalid="true"&lt;/c:if&gt;&gt;
+    &lt;c:if test="${not empty fieldErrors.userName}"&gt;
+      &lt;p class="lg-form__error-msg" role="alert" aria-live="assertive"&gt;
+        &lt;c:out value="${fieldErrors.userName}"/&gt;
+      &lt;/p&gt;
+    &lt;/c:if&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+          <div class="lg-guide__code-wrap" style="margin-top:16px;">
+            <button type="button" class="lg-guide__copy-btn" data-lg-copy-btn data-copy-target="code-form-validation">코드 복사</button>
+            <pre class="lg-guide__code"><code id="code-form-validation">// 프론트엔드 Validation — aria-invalid + .lg-form__error-msg 바인딩
+function setFieldError(field, message) {
+  const group = field.closest('.lg-form__group');
+  const errorEl = group.querySelector('.lg-form__error-msg');
+  field.setAttribute('aria-invalid', 'true');
+  errorEl.textContent = message;
+  errorEl.hidden = false;
+}
+
+function clearFieldError(field) {
+  const group = field.closest('.lg-form__group');
+  const errorEl = group.querySelector('.lg-form__error-msg');
+  field.removeAttribute('aria-invalid');
+  errorEl.textContent = '';
+  errorEl.hidden = true;
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!userName.value.trim()) {
+    setFieldError(userName, '이름을 입력해 주세요.');
+    return;
+  }
+  clearFieldError(userName);
+});</code></pre>
+          </div>
+        </div>
+      </section>
+

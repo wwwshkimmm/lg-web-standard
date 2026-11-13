@@ -1,0 +1,116 @@
+.lg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+
+  // 크기
+  &--sm {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-height: 36px;
+  }
+
+  &--md {
+    padding: 12px 24px;
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  &--lg {
+    padding: 16px 32px;
+    font-size: 18px;
+    min-height: 52px;
+  }
+
+  // 변형
+  &--primary {
+    background-color: var(--brand-active-red);
+    color: var(--text-inverse);
+
+    &:hover:not(:disabled):not(.lg-btn--loading) {
+      background-color: var(--brand-heritage-red);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--brand-heritage-red);
+    color: var(--text-inverse);
+
+    &:hover:not(:disabled):not(.lg-btn--loading) {
+      background-color: #8a002c;
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-strong);
+
+    &:hover:not(:disabled):not(.lg-btn--loading) {
+      border-color: var(--brand-active-red);
+      color: var(--brand-active-red);
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: var(--text-primary);
+
+    &:hover:not(:disabled):not(.lg-btn--loading) {
+      background-color: var(--bg-secondary);
+    }
+  }
+
+  // 상태
+  &:disabled,
+  &--disabled {
+    background-color: var(--border-color);
+    color: var(--text-disabled);
+    border-color: var(--border-color);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: lg-btn-spin 0.6s linear infinite;
+    }
+
+    &.lg-btn--primary::after,
+    &.lg-btn--secondary::after {
+      border-color: var(--text-inverse);
+      border-right-color: transparent;
+    }
+  }
+
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+}
+
+@keyframes lg-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

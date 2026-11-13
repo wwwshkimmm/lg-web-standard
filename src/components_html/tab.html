@@ -1,0 +1,86 @@
+<%--
+
+  Tab 컴포넌트 - JSP/JSTL 변환 가이드
+
+  Model: tabList (List<TabVO>)
+
+    - tabId, tabLabel, activeYn, disabledYn, panelContent (또는 panelPath)
+
+  JS 제어: data-lg-toggle="tab" data-lg-target / data-lg-panel
+
+--%>
+
+<div class="lg-tab" data-lg-component="tab" role="tablist" aria-label="${tabGroupLabel}">
+
+  <ul class="lg-tab__list">
+
+    <c:forEach var="tab" items="${tabList}">
+
+    <li class="lg-tab__item" role="presentation">
+
+      <button type="button"
+
+              class="lg-tab__btn<c:if test='${tab.activeYn eq \"Y\"}'> lg-tab__btn--active</c:if>"
+
+              role="tab"
+
+              data-lg-toggle="tab"
+
+              data-lg-target="${tab.tabId}"
+
+              aria-selected="${tab.activeYn eq 'Y'}"
+
+              <c:if test="${tab.disabledYn eq 'Y'}">disabled</c:if>
+
+              id="tab-${tab.tabId}">
+
+        ${tab.tabLabel}
+
+      </button>
+
+    </li>
+
+    </c:forEach>
+
+  </ul>
+
+
+
+  <div class="lg-tab__panels">
+
+    <c:forEach var="tab" items="${tabList}">
+
+    <div class="lg-tab__panel<c:if test='${tab.activeYn eq \"Y\"}'> lg-tab__panel--active</c:if>"
+
+         role="tabpanel"
+
+         data-lg-panel="${tab.tabId}"
+
+         aria-labelledby="tab-${tab.tabId}"
+
+         <c:if test="${tab.activeYn ne 'Y'}">hidden</c:if>>
+
+      <c:choose>
+
+        <c:when test="${not empty tab.panelPath}">
+
+          <jsp:include page="${tab.panelPath}" />
+
+        </c:when>
+
+        <c:otherwise>
+
+          ${tab.panelContent}
+
+        </c:otherwise>
+
+      </c:choose>
+
+    </div>
+
+    </c:forEach>
+
+  </div>
+
+</div>
+

@@ -1,0 +1,50 @@
+<%--
+
+  Accordion 컴포넌트 - JSP/JSTL 변환 가이드
+
+  Model: faqList (List<FaqVO>)
+
+    - faqId, question, answer, openYn
+
+  JS 제어: data-lg-toggle="accordion" / data-lg-mode="single|multiple"
+
+--%>
+
+<div class="lg-accordion" data-lg-component="accordion" data-lg-mode="${accordionMode}">
+
+  <c:forEach var="faq" items="${faqList}">
+
+  <div class="lg-accordion__item<c:if test='${faq.openYn eq \"Y\"}'> lg-accordion__item--open</c:if>" data-lg-item>
+
+    <button type="button"
+
+            class="lg-accordion__trigger"
+
+            data-lg-toggle="accordion"
+
+            aria-expanded="${faq.openYn eq 'Y'}"
+
+            id="accordion-trigger-${faq.faqId}">
+
+      <span class="lg-accordion__question">${faq.question}</span>
+
+      <span class="lg-accordion__icon" aria-hidden="true">&#9660;</span>
+
+    </button>
+
+    <div class="lg-accordion__panel"
+
+         role="region"
+
+         aria-labelledby="accordion-trigger-${faq.faqId}">
+
+      <p class="lg-accordion__answer">${faq.answer}</p>
+
+    </div>
+
+  </div>
+
+  </c:forEach>
+
+</div>
+

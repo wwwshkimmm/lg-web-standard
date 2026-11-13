@@ -1,0 +1,66 @@
+<%--
+
+  Button 컴포넌트 - JSP/JSTL 변환 가이드
+
+  파라미터:
+
+    - btnType: button | submit | reset | a (링크)
+
+    - btnVariant: primary | secondary | outline | ghost
+
+    - btnSize: sm | md | lg
+
+    - btnDisabled: Y | N
+
+    - btnLoading: Y | N
+
+    - btnBlock: Y | N (전체 너비)
+
+    - btnText, btnUrl (a 태그 시), btnAction (data-lg-action)
+
+--%>
+
+
+
+<c:set var="btnClass" value="lg-btn lg-btn--${btnVariant} lg-btn--${btnSize}" />
+
+<c:if test="${btnBlock eq 'Y'}"><c:set var="btnClass" value="${btnClass} lg-btn--block" /></c:if>
+
+<c:if test="${btnLoading eq 'Y'}"><c:set var="btnClass" value="${btnClass} lg-btn--loading" /></c:if>
+
+
+
+<c:choose>
+
+  <c:when test="${btnType eq 'a'}">
+
+    <a href="${btnUrl}" class="${btnClass}" data-lg-component="button"
+
+       <c:if test="${not empty btnAction}">data-lg-action="${btnAction}"</c:if>
+
+       <c:if test="${btnDisabled eq 'Y'}">aria-disabled="true" tabindex="-1"</c:if>>
+
+      ${btnText}
+
+    </a>
+
+  </c:when>
+
+  <c:otherwise>
+
+    <button type="${btnType}" class="${btnClass}" data-lg-component="button"
+
+            <c:if test="${not empty btnAction}">data-lg-action="${btnAction}"</c:if>
+
+            <c:if test="${btnDisabled eq 'Y'}">disabled</c:if>
+
+            <c:if test="${btnLoading eq 'Y'}">aria-busy="true"</c:if>>
+
+      ${btnText}
+
+    </button>
+
+  </c:otherwise>
+
+</c:choose>
+

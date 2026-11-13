@@ -1,0 +1,58 @@
+<%--
+
+  Modal 컴포넌트 - JSP/JSTL 변환 가이드
+
+  Model: modalId, modalTitle, modalSize(sm|lg|full), showFooterYn
+
+  JS 제어: data-lg-toggle="modal" / data-lg-toggle="modal-close"
+
+--%>
+
+
+
+<button type="button" class="lg-btn lg-btn--primary lg-btn--md"
+
+        data-lg-toggle="modal" data-lg-target="#${modalId}">
+
+  ${modalTriggerText}
+
+</button>
+
+
+
+<dialog id="${modalId}" class="lg-modal lg-modal--${modalSize}"
+
+        data-lg-component="modal" aria-labelledby="${modalId}-title">
+
+  <header class="lg-modal__header">
+
+    <h2 id="${modalId}-title" class="lg-modal__title">${modalTitle}</h2>
+
+    <button type="button" class="lg-modal__close" data-lg-toggle="modal-close" aria-label="닫기">&times;</button>
+
+  </header>
+
+
+
+  <div class="lg-modal__body">
+
+    <jsp:include page="${modalBodyPath}" />
+
+  </div>
+
+
+
+  <c:if test="${showFooterYn eq 'Y'}">
+
+  <footer class="lg-modal__footer">
+
+    <button type="button" class="lg-btn lg-btn--outline lg-btn--md" data-lg-toggle="modal-close">취소</button>
+
+    <button type="button" class="lg-btn lg-btn--primary lg-btn--md" data-lg-toggle="modal-close">확인</button>
+
+  </footer>
+
+  </c:if>
+
+</dialog>
+

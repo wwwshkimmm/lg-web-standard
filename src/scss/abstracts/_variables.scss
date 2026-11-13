@@ -1,0 +1,25 @@
+// LG전자 글로벌 디자인 시스템 — CSS 변수
+:root {
+  // Brand Colors
+  --brand-active-red: #FD312E;
+  --brand-heritage-red: #A50034;
+
+  // Colors
+  --text-primary: #222222;
+  --text-secondary: #666666;
+  --text-disabled: #999999;
+  --text-inverse: #ffffff;
+
+  --bg-primary: #f8f8f8;
+  --bg-secondary: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --border-color: #eeeeee;
+  --border-strong: #dddddd;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  --code-bg: #f5f5f5;
+  --overlay: rgba(0, 0, 0, 0.5);
+}

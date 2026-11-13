@@ -1,0 +1,118 @@
+<%--
+
+  Pagination 컴포넌트 - JSP/JSTL 변환 가이드
+
+  Model:
+
+    - currentPage (int), totalPages (int)
+
+    - pageList (List<PageVO>): pageNum, activeYn
+
+    - prevDisabledYn, nextDisabledYn
+
+    - baseUrl (페이지 URL 패턴, 예: /list?page=)
+
+    - paginationAjax eq 'Y' 시 data-lg-ajax="true"
+
+  JS 제어: data-lg-toggle="page" data-lg-target
+
+--%>
+
+<nav class="lg-pagination" data-lg-component="pagination"
+
+     aria-label="페이지 네비게이션"
+
+     <c:if test="${paginationAjax eq 'Y'}">data-lg-ajax="true"</c:if>>
+
+  <ul class="lg-pagination__list">
+
+    <li class="lg-pagination__item">
+
+      <c:choose>
+
+        <c:when test="${prevDisabledYn eq 'Y'}">
+
+          <button type="button" class="lg-pagination__btn lg-pagination__btn--prev lg-pagination__btn--disabled" disabled aria-label="이전 페이지">이전</button>
+
+        </c:when>
+
+        <c:otherwise>
+
+          <a href="${baseUrl}${currentPage - 1}" class="lg-pagination__btn lg-pagination__btn--prev"
+
+             data-lg-toggle="page" data-lg-target="${currentPage - 1}" aria-label="이전 페이지">이전</a>
+
+        </c:otherwise>
+
+      </c:choose>
+
+    </li>
+
+
+
+    <c:forEach var="page" items="${pageList}">
+
+    <li class="lg-pagination__item">
+
+      <c:choose>
+
+        <c:when test="${page.type eq 'ellipsis'}">
+
+          <span class="lg-pagination__ellipsis" aria-hidden="true">&hellip;</span>
+
+        </c:when>
+
+        <c:when test="${page.activeYn eq 'Y'}">
+
+          <button type="button" class="lg-pagination__btn lg-pagination__btn--active"
+
+                  data-lg-toggle="page" data-lg-target="${page.pageNum}"
+
+                  aria-label="현재 페이지 ${page.pageNum}" aria-current="page">${page.pageNum}</button>
+
+        </c:when>
+
+        <c:otherwise>
+
+          <a href="${baseUrl}${page.pageNum}" class="lg-pagination__btn"
+
+             data-lg-toggle="page" data-lg-target="${page.pageNum}"
+
+             aria-label="페이지 ${page.pageNum}">${page.pageNum}</a>
+
+        </c:otherwise>
+
+      </c:choose>
+
+    </li>
+
+    </c:forEach>
+
+
+
+    <li class="lg-pagination__item">
+
+      <c:choose>
+
+        <c:when test="${nextDisabledYn eq 'Y'}">
+
+          <button type="button" class="lg-pagination__btn lg-pagination__btn--next lg-pagination__btn--disabled" disabled aria-label="다음 페이지">다음</button>
+
+        </c:when>
+
+        <c:otherwise>
+
+          <a href="${baseUrl}${currentPage + 1}" class="lg-pagination__btn lg-pagination__btn--next"
+
+             data-lg-toggle="page" data-lg-target="${currentPage + 1}" aria-label="다음 페이지">다음</a>
+
+        </c:otherwise>
+
+      </c:choose>
+
+    </li>
+
+  </ul>
+
+</nav>
+

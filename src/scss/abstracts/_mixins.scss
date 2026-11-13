@@ -1,0 +1,29 @@
+// LG전자 표준 반응형 브레이크포인트
+// Mobile: ~767px | Tablet: 768px~1023px | PC: 1024px~
+
+$bp-tablet: 768px;
+$bp-pc: 1024px;
+
+@mixin mobile {
+  @media (max-width: #{$bp-tablet - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $bp-tablet) and (max-width: #{$bp-pc - 1}) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: $bp-pc) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}

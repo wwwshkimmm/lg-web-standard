@@ -1,0 +1,112 @@
+.lg-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-surface);
+  overflow: hidden;
+  height: 100%;
+
+  // 이미지 영역 (c:if test="${not empty card.imageUrl}")
+  &__media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--bg-secondary);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background-color: var(--brand-active-red);
+    color: var(--text-inverse);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+    gap: 12px;
+  }
+
+  &__eyebrow {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-heritage-red);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  &__desc {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-disabled);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    padding-top: 8px;
+    margin-top: auto;
+
+    .lg-btn {
+      flex: 1 1 0;
+      min-width: 0;
+      padding-left: 12px;
+      padding-right: 12px;
+      font-size: 14px;
+    }
+  }
+
+  // 레이아웃 변형
+  &--horizontal {
+    @media (min-width: 768px) {
+      flex-direction: row;
+
+      .lg-card__media {
+        flex: 0 0 40%;
+        aspect-ratio: auto;
+        min-height: 200px;
+      }
+    }
+  }
+
+  &--borderless {
+    border: none;
+    box-shadow: var(--shadow-md);
+  }
+}

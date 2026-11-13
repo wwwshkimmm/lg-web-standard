@@ -1,0 +1,106 @@
+<%--
+
+  Card 컴포넌트 - JSP/JSTL 변환 가이드
+
+  Model: card (CardVO)
+
+    - imageUrl, imageAlt, badgeText, eyebrow, title, description
+
+    - metaList, primaryBtnUrl, primaryBtnText, secondaryBtnUrl, secondaryBtnText
+
+--%>
+
+<article class="lg-card" data-lg-component="card">
+
+  <c:if test="${not empty card.imageUrl}">
+
+  <div class="lg-card__media">
+
+    <img src="${card.imageUrl}" alt="${card.imageAlt}" loading="lazy" />
+
+    <c:if test="${not empty card.badgeText}">
+
+    <span class="lg-card__badge">${card.badgeText}</span>
+
+    </c:if>
+
+  </div>
+
+  </c:if>
+
+
+
+  <div class="lg-card__body">
+
+    <c:if test="${not empty card.eyebrow}">
+
+    <p class="lg-card__eyebrow">${card.eyebrow}</p>
+
+    </c:if>
+
+
+
+    <c:if test="${not empty card.title}">
+
+    <h3 class="lg-card__title">${card.title}</h3>
+
+    </c:if>
+
+
+
+    <c:if test="${not empty card.description}">
+
+    <p class="lg-card__desc">${card.description}</p>
+
+    </c:if>
+
+
+
+    <c:if test="${not empty card.metaList}">
+
+    <div class="lg-card__meta">
+
+      <c:forEach var="meta" items="${card.metaList}">
+
+      <span>${meta}</span>
+
+      </c:forEach>
+
+    </div>
+
+    </c:if>
+
+
+
+    <c:if test="${not empty card.primaryBtnUrl or not empty card.secondaryBtnUrl}">
+
+    <div class="lg-card__actions">
+
+      <c:if test="${not empty card.primaryBtnUrl}">
+
+      <a href="${card.primaryBtnUrl}" class="lg-btn lg-btn--primary lg-btn--md" data-lg-component="button">
+
+        ${card.primaryBtnText}
+
+      </a>
+
+      </c:if>
+
+      <c:if test="${not empty card.secondaryBtnUrl}">
+
+      <a href="${card.secondaryBtnUrl}" class="lg-btn lg-btn--outline lg-btn--md" data-lg-component="button">
+
+        ${card.secondaryBtnText}
+
+      </a>
+
+      </c:if>
+
+    </div>
+
+    </c:if>
+
+  </div>
+
+</article>
+

@@ -1,0 +1,162 @@
+<%--
+
+  GNB 컴포넌트 - JSP/JSTL 변환 가이드
+
+  Model: gnbMenuList (List<GnbMenuVO>)
+
+    - menuId, menuName, menuUrl, currentYn, children (depth2)
+
+    - children[].children (depth3)
+
+  JS 제어: data-lg-toggle / data-lg-target (class와 분리)
+
+--%>
+
+<header class="lg-gnb" data-lg-component="gnb" role="banner">
+
+  <div class="lg-gnb__inner">
+
+    <div class="lg-gnb__logo">
+
+      <a href="${pageContext.request.contextPath}/">
+
+        <c:choose>
+
+          <c:when test="${not empty gnbLogoAlt}">${gnbLogoAlt}</c:when>
+
+          <c:otherwise>LG</c:otherwise>
+
+        </c:choose>
+
+      </a>
+
+    </div>
+
+
+
+    <nav class="lg-gnb__nav" aria-label="메인 메뉴">
+
+      <ul class="lg-gnb__list" role="menubar">
+
+        <c:forEach var="menu" items="${gnbMenuList}">
+
+        <li class="lg-gnb__item<c:if test='${menu.currentYn eq \"Y\"}'> lg-gnb__item--active</c:if>" role="none">
+
+          <a href="${menu.menuUrl}" class="lg-gnb__link<c:if test='${menu.currentYn eq \"Y\"}'> lg-gnb__link--current</c:if>" role="menuitem">
+
+            ${menu.menuName}
+
+          </a>
+
+          <c:if test="${not empty menu.children}">
+
+          <ul class="lg-gnb__sub" role="menu">
+
+            <c:forEach var="sub" items="${menu.children}">
+
+            <li class="lg-gnb__sub-item<c:if test='${sub.currentYn eq \"Y\"}'> lg-gnb__sub-item--active</c:if>" role="none">
+
+              <a href="${sub.menuUrl}" class="lg-gnb__sub-link" role="menuitem">${sub.menuName}</a>
+
+              <c:if test="${not empty sub.children}">
+
+              <ul class="lg-gnb__depth3" role="menu">
+
+                <c:forEach var="depth3" items="${sub.children}">
+
+                <li role="none">
+
+                  <a href="${depth3.menuUrl}" class="lg-gnb__depth3-link" role="menuitem">${depth3.menuName}</a>
+
+                </li>
+
+                </c:forEach>
+
+              </ul>
+
+              </c:if>
+
+            </li>
+
+            </c:forEach>
+
+          </ul>
+
+          </c:if>
+
+        </li>
+
+        </c:forEach>
+
+      </ul>
+
+    </nav>
+
+
+
+    <div class="lg-gnb__util">
+
+      <button type="button" class="lg-gnb__mobile-toggle" data-lg-toggle="gnb-menu" aria-expanded="false" aria-label="메뉴 열기">
+
+        <span aria-hidden="true">&#9776;</span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="lg-gnb__dim" data-lg-target="gnb-dim"></div>
+
+  <div class="lg-gnb__mobile-panel" data-lg-target="gnb-mobile">
+
+    <ul class="lg-gnb__mobile-list">
+
+      <c:forEach var="menu" items="${gnbMenuList}">
+
+      <li class="lg-gnb__mobile-item">
+
+        <c:choose>
+
+          <c:when test="${not empty menu.children}">
+
+            <button type="button" class="lg-gnb__mobile-link" data-lg-toggle="gnb-sub" aria-expanded="false">
+
+              ${menu.menuName}
+
+              <span aria-hidden="true">&#9660;</span>
+
+            </button>
+
+            <ul class="lg-gnb__mobile-sub">
+
+              <c:forEach var="sub" items="${menu.children}">
+
+              <li><a href="${sub.menuUrl}" class="lg-gnb__mobile-sub-link">${sub.menuName}</a></li>
+
+              </c:forEach>
+
+            </ul>
+
+          </c:when>
+
+          <c:otherwise>
+
+            <a href="${menu.menuUrl}" class="lg-gnb__mobile-link">${menu.menuName}</a>
+
+          </c:otherwise>
+
+        </c:choose>
+
+      </li>
+
+      </c:forEach>
+
+    </ul>
+
+  </div>
+
+</header>
+
