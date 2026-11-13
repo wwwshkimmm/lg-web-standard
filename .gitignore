@@ -1,5 +1,5 @@
 node_modules/
-dist/
+# dist/ (tracked for GitHub Pages)
 .DS_Store
 Thumbs.db
 *.log
